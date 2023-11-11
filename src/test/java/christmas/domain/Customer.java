@@ -8,6 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Customer {
+    public EventPlanner placeOrder(){
+        return EventPlanner.of(decideVisitDay(), decideMenu());
+    }
 
     private Day decideVisitDay(){
         int visitDate = InputView.inputVisitDate();

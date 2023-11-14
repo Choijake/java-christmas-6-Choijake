@@ -15,6 +15,14 @@ public class EventPlanner {
         return new EventPlanner(day, orders);
     }
 
+    public void printReceipt(){
+        System.out.println(getReceipt().toString());
+    }
+
+    private Receipt getReceipt(){
+        return conveyOrderSheet(writeOrderSheet(day, orders)).issueReceipt();
+    }
+
     private Manager conveyOrderSheet(OrderSheet orderSheet){
         return Manager.get(orderSheet);
     }

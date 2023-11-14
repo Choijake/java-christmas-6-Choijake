@@ -1,4 +1,4 @@
-package christmas.domain.constant;
+package christmas.domain;
 
 public enum Menu {
     //에피타이저
@@ -16,7 +16,7 @@ public enum Menu {
     CHOCOLATE_CAKE("desert", "초코케이크", 15000),
     ICE_CREAM("desert", "아이스크림", 5000),
 
-    //
+    //음료
     COKE_ZERO("beverage", "제로콜라", 3000),
     RED_WINE("beverage", "레드와인", 60000),
     CHAMPAGNE("beverage", "샴페인", 25000)

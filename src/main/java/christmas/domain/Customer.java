@@ -1,29 +1,21 @@
 package christmas.domain;
 
-import christmas.view.InputView;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Customer {
-    public EventPlanner placeOrder(){
-        return EventPlanner.of(decideVisitDay(), decideMenu());
+    private final Day day;
+    private final List<Order> orders;
+
+    private Customer(final Day day, final List<Order> orders) {
+        this.day = day;
+        this.orders = orders;
     }
 
-    private Day decideVisitDay(){
-        int visitDate = InputView.inputVisitDate();
-        return Day.of(visitDate);
+    public static Customer order(final Day day, final List<Order> orders){
+        return new Customer(day, orders);
     }
 
-    private List<Order> decideMenu(){
-        List<String> menuAndQuantityList = Arrays
-                .asList(InputView.inputMenuAndQuantity().split(","));
-        List<Order> orders = new ArrayList<>();
-
-        menuAndQuantityList.stream()
-                .map(menuAndQuantity -> menuAndQuantity.split("-"))
-                .forEach(part -> orders.add(new Order(part[0], Integer.parseInt(part[1]))));
-
-        return orders;
+    public OrderSheet writeOrderSheet(){
+        return OrderSheet.of(day, orders);
     }
 }

@@ -1,6 +1,7 @@
 package christmas.domain;
 
 import static christmas.exception.ErrorMessage.NOT_EXIST_MENU;
+import static christmas.exception.ErrorMessage.ZERO_MENU_QUANTITY;
 
 import christmas.exception.OrderException;
 import java.util.Objects;
@@ -50,6 +51,7 @@ public class Order {
 
     public void validate(){
         validateMenuName();
+        validateQuantity();
     }
 
     public void validateMenuName(){
@@ -63,6 +65,12 @@ public class Order {
         }
         if (!isMenuNameValid) {
             throw OrderException.from(NOT_EXIST_MENU);
+        }
+    }
+
+    public void validateQuantity(){
+        if(quantity <= 0){
+            throw OrderException.from(ZERO_MENU_QUANTITY);
         }
     }
 }

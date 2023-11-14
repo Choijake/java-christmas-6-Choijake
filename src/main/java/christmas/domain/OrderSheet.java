@@ -6,6 +6,8 @@ import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class OrderSheet {
+    private final static String DESERT_CATEGORY = "desert";
+    private final static String MAIN_CATEGORY = "main";
     private final Day day;
     private final List<Order> orders;
 
@@ -30,7 +32,7 @@ public class OrderSheet {
     public Integer getDesertCount(){
         int desertCount = 0;
         for(Order order : orders){
-            if(Objects.equals(order.getCategory(), "desert")){
+            if(Objects.equals(order.getCategory(), DESERT_CATEGORY)){
                 desertCount += order.getQuantity();
             }
         }
@@ -41,7 +43,7 @@ public class OrderSheet {
     public Integer getMainCount(){
         int mainCount = 0;
         for(Order order : orders){
-            if(Objects.equals(order.getCategory(), "main")){
+            if(Objects.equals(order.getCategory(), MAIN_CATEGORY)){
                 mainCount += order.getQuantity();
             }
         }

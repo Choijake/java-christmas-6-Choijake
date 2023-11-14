@@ -1,6 +1,5 @@
 package christmas.domain;
 
-import christmas.domain.constant.Menu;
 import java.util.Objects;
 
 public class Order {

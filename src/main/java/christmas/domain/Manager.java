@@ -12,7 +12,7 @@ public class Manager {
         return new Manager(orderSheet);
     }
 
-    public Receipt issueReceipt(){
-        return Receipt.of(orderSheet, Discount.of(orderSheet));
+    public Receipt issueReceipt(Discount discount){
+        return Receipt.of(orderSheet, discount);
     }
 }

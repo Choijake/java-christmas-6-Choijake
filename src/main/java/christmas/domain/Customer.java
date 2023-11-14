@@ -1,10 +1,8 @@
 package christmas.domain;
 
 import christmas.view.InputView;
-import java.awt.Menu;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 public class Customer {

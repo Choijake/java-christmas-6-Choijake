@@ -1,11 +1,7 @@
 package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.domain.Day;
-import christmas.domain.Order;
 import christmas.view.constant.printConstant;
-import java.util.HashMap;
-import java.util.Map;
 
 public class InputView {
     public static int inputVisitDate(){

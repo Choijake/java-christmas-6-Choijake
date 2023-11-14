@@ -2,6 +2,7 @@ package christmas.view.input;
 
 import static christmas.view.constant.printConstant.ASK_MENU_AND_QUANTITY_MESSAGE;
 import static christmas.view.constant.printConstant.ASK_VISIT_DATE_MESSAGE;
+import static christmas.view.input.Parser.validateFormat;
 
 import christmas.domain.Day;
 import christmas.domain.Order;
@@ -38,8 +39,9 @@ public class InputHandler {
         try {
             final String menuAndQuantity = InputReader.readLine();
             List<String> menuAndQuantityList = Parser.splitByDelimiter(menuAndQuantity);
-            List<Order> orders = new ArrayList<>();
+            menuAndQuantityList.forEach(Parser::validateFormat);
 
+            List<Order> orders = new ArrayList<>();
             menuAndQuantityList.stream()
                     .map(m -> m.split("-"))
                     .forEach(part -> orders.add(new Order(part[0], Integer.parseInt(part[1]))));

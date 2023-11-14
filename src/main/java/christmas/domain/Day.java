@@ -1,10 +1,17 @@
 package christmas.domain;
 
+import static christmas.exception.ErrorMessage.DAY_NOT_IN_RANGE;
+import static christmas.exception.ErrorMessage.ENDS_WITH_DELIMITER;
+
+import christmas.exception.OrderException;
+
 public class Day {
     //TODO : 생성자에서 validate, day에 대한 할인 내역있는지 확인하는 인터페이스 만들기
     private final int day;
     public static final int D_DAY = 25;
     private static final int INITIAL_D_DAY_DISCOUNT_AMOUNT = 1000;
+    public static final int MIN_DAY = 1;
+    public static final int MAX_DAY = 31;
 
     private Day(int day) {
         this.day = day;
@@ -55,11 +62,9 @@ public class Day {
     public void validate(){
         validateEventPeriod();
     }
-
-    //TODO : day 1~31 사이의 수 인지 확인 후 아니면 다시 입력 하도록
     private void validateEventPeriod(){
-
+        if (day < MIN_DAY || day > MAX_DAY) {
+            throw OrderException.from(DAY_NOT_IN_RANGE);
+        }
     }
-
-
 }

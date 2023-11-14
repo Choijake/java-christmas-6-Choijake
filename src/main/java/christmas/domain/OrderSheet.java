@@ -1,5 +1,10 @@
 package christmas.domain;
 
+import static christmas.exception.ErrorMessage.ALL_MENU_BEVERAGE;
+import static christmas.exception.ErrorMessage.OVER_LIMIT_QUANTITY;
+import static christmas.exception.ErrorMessage.ZERO_MENU_QUANTITY;
+
+import christmas.exception.OrderException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
@@ -8,12 +13,14 @@ import java.util.concurrent.atomic.AtomicReference;
 public class OrderSheet {
     private final static String DESERT_CATEGORY = "desert";
     private final static String MAIN_CATEGORY = "main";
+    private final static String BEVERAGE_CATEGORY = "beverage";
     private final Day day;
     private final List<Order> orders;
 
     private OrderSheet(Day day, List<Order> orders) {
         this.day = day;
         this.orders = orders;
+        validate();
     }
 
     public static OrderSheet of(Day day, List<Order> orders){
@@ -26,6 +33,23 @@ public class OrderSheet {
             totalPrice += order.getTotalPriceForMenu();
         }
         return totalPrice;
+    }
+
+    public int getTotalQuantity(){
+        int totalQuantity = 0;
+        for(Order order : orders){
+            totalQuantity += order.getQuantity();
+        }
+        return totalQuantity;
+    }
+
+    public boolean areAllMenuBeverage() {
+        for (Order order : orders) {
+            if (!Objects.equals(order.getCategory(), BEVERAGE_CATEGORY)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     //평일 할인용
@@ -74,5 +98,22 @@ public class OrderSheet {
 
     public int getDDayDiscountAmount(){
         return day.getDDayDiscountAmount();
+    }
+
+    public void validate(){
+        validateTotalQuantity();
+        validateMenuCategory();
+    }
+
+    private void validateTotalQuantity(){
+        if(getTotalQuantity() > 20){
+            throw OrderException.from(OVER_LIMIT_QUANTITY);
+        }
+    }
+
+    private void validateMenuCategory(){
+        if(areAllMenuBeverage()){
+            throw OrderException.from(ALL_MENU_BEVERAGE);
+        }
     }
 }

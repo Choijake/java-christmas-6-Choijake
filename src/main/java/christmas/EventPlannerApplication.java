@@ -2,11 +2,13 @@ package christmas;
 
 import christmas.domain.Customer;
 import christmas.domain.Discount;
+import christmas.exception.OrderException;
 import christmas.view.input.InputHandler;
 import christmas.domain.Manager;
 import christmas.domain.OrderSheet;
 import christmas.domain.Receipt;
 import christmas.view.output.OutputView;
+import christmas.view.output.OutputWriter;
 
 public class EventPlannerApplication {
     public static void activate(){
@@ -14,9 +16,14 @@ public class EventPlannerApplication {
     }
 
     public static OrderSheet set(){
-        Customer customer = Customer
-                .order(InputHandler.requestDay(), InputHandler.requestOrder());
-        return customer.writeOrderSheet();
+        try {
+            Customer customer = Customer
+                    .order(InputHandler.requestDay(), InputHandler.requestOrder());
+            return customer.writeOrderSheet();
+        } catch (OrderException exception) {
+            OutputWriter.println(exception.getMessage());
+            return set();
+        }
     }
 
     public static Receipt operate(OrderSheet orderSheet){

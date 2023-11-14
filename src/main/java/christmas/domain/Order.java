@@ -1,5 +1,8 @@
 package christmas.domain;
 
+import static christmas.exception.ErrorMessage.NOT_EXIST_MENU;
+
+import christmas.exception.OrderException;
 import java.util.Objects;
 
 public class Order {
@@ -9,6 +12,7 @@ public class Order {
     public Order(String menuName, int quantity) {
         this.menuName = menuName;
         this.quantity = quantity;
+        validate();
     }
 
     public int getPrice(){
@@ -42,5 +46,23 @@ public class Order {
     @Override
     public String toString() {
         return menuName + " " + quantity + "개";
+    }
+
+    public void validate(){
+        validateMenuName();
+    }
+
+    public void validateMenuName(){
+        boolean isMenuNameValid = false;
+
+        for (Menu menu : Menu.values()) {
+            if (menu.getName().equals(menuName)) {
+                isMenuNameValid = true;
+                break;
+            }
+        }
+        if (!isMenuNameValid) {
+            throw OrderException.from(NOT_EXIST_MENU);
+        }
     }
 }

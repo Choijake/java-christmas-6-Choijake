@@ -16,6 +16,7 @@ public class OutputView {
 
     //이벤트 플래너
     public void writeEventPlan(){
+        OutputWriter.println(printConstant.SHOW_RECEIPT_MESSAGE.getMessage());
         writeOrderMenu();
         writeBeforeDiscountAmount();
         writeGiftPromotionMenu();

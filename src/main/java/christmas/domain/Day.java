@@ -3,15 +3,12 @@ package christmas.domain;
 import static christmas.exception.ErrorMessage.DAY_NOT_IN_RANGE;
 import static christmas.exception.ErrorMessage.ENDS_WITH_DELIMITER;
 
+import christmas.domain.constant.EventConstraint;
 import christmas.exception.OrderException;
 
 public class Day {
     //TODO : 생성자에서 validate, day에 대한 할인 내역있는지 확인하는 인터페이스 만들기
     private final int day;
-    public static final int D_DAY = 25;
-    private static final int INITIAL_D_DAY_DISCOUNT_AMOUNT = 1000;
-    public static final int MIN_DAY = 1;
-    public static final int MAX_DAY = 31;
 
     private Day(int day) {
         this.day = day;
@@ -24,13 +21,13 @@ public class Day {
 
     public int getDDayDiscountAmount(){
         if(isBeforeDDay()){
-            return INITIAL_D_DAY_DISCOUNT_AMOUNT + (day-1) * 100;
+            return EventConstraint.INITIAL_D_DAY_DISCOUNT_AMOUNT.getValue() + (day-1) * 100;
         }
         return 0;
     }
 
     public boolean isBeforeDDay(){
-        return day <= D_DAY;
+        return day <= EventConstraint.D_DAY.getValue();
     }
 
     public boolean isWeekDay(){
@@ -63,7 +60,7 @@ public class Day {
         validateEventPeriod();
     }
     private void validateEventPeriod(){
-        if (day < MIN_DAY || day > MAX_DAY) {
+        if (day < EventConstraint.MIN_DAY.getValue() || day > EventConstraint.MAX_DAY.getValue()) {
             throw OrderException.from(DAY_NOT_IN_RANGE);
         }
     }

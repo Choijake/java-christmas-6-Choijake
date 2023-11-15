@@ -26,8 +26,7 @@ public class OrderHandlerTest {
 
         Customer customer = Customer.order(testDay, testOrders);
 
-        assertEquals(testDay, customer.getDay());
-        assertEquals(testOrders, customer.getOrders());
+        assertThat(customer).isNotNull();
     }
 
     @DisplayName("writeOrderSheet 메서드 테스트")

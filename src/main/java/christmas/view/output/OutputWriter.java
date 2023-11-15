@@ -7,10 +7,6 @@ public class OutputWriter {
         System.out.println(data);
     }
 
-    public static void printNewLine() {
-        System.out.println();
-    }
-
     public static void printMessage(final printConstant message) {
         println(message.getMessage());
     }

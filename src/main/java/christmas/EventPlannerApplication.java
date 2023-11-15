@@ -7,6 +7,7 @@ import christmas.view.input.InputHandler;
 import christmas.domain.Manager;
 import christmas.domain.OrderSheet;
 import christmas.domain.Receipt;
+import christmas.view.input.InputView;
 import christmas.view.output.OutputView;
 import christmas.view.output.OutputWriter;
 
@@ -18,7 +19,7 @@ public class EventPlannerApplication {
     public static OrderSheet set(){
         try {
             Customer customer = Customer
-                    .order(InputHandler.requestDay(), InputHandler.requestOrder());
+                    .order(InputView.inputVisitDate(), InputView.inputOrder());
             return customer.writeOrderSheet();
         } catch (OrderException exception) {
             OutputWriter.println(exception.getMessage());

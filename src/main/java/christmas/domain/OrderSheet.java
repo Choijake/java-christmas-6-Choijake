@@ -11,6 +11,7 @@ import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class OrderSheet {
+    public static final int MAX_ORDER_AMOUNT = 20;
     private final static String DESERT_CATEGORY = "desert";
     private final static String MAIN_CATEGORY = "main";
     private final static String BEVERAGE_CATEGORY = "beverage";
@@ -106,7 +107,7 @@ public class OrderSheet {
     }
 
     private void validateTotalQuantity(){
-        if(getTotalQuantity() > 20){
+        if(getTotalQuantity() > MAX_ORDER_AMOUNT){
             throw OrderException.from(OVER_LIMIT_QUANTITY);
         }
     }

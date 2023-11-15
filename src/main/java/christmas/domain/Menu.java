@@ -1,6 +1,7 @@
 package christmas.domain;
 
 public enum Menu {
+
     //에피타이저
     MUSHROOM_SOUP("appetizer", "양송이수프", 6000),
     TAPAS("appetizer","타파스", 5500),

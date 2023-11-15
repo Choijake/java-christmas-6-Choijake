@@ -14,8 +14,7 @@ public enum EventConstraint {
     MAX_ORDER_AMOUNT(20),
     STAR_BADGE_STANDARD_AMOUNT(5000),
     TREE_BADGE_STANDARD_AMOUNT(10000),
-    SANTA_BADGE_STANDARD_AMOUNT(20000);
-
+    SANTA_BADGE_STANDARD_AMOUNT(20000),;
     private final int value;
 
     EventConstraint(int value) {

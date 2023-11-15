@@ -1,6 +1,6 @@
 package christmas.view.constant;
 
-public enum printConstant {
+public enum printConstraint {
     LINE_SEPARATOR(System.lineSeparator()),
     WELCOME_MESSAGE("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다."),
     ASK_VISIT_DATE_MESSAGE("12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)"),
@@ -29,7 +29,7 @@ public enum printConstant {
     ;
 
     private String message;
-    printConstant(String message) {
+    printConstraint(String message) {
         this.message = message;
     }
 

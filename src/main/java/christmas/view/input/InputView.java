@@ -1,7 +1,6 @@
 package christmas.view.input;
 
-import static christmas.view.constant.printConstant.ASK_VISIT_DATE_MESSAGE;
-import static christmas.view.constant.printConstant.WELCOME_MESSAGE;
+import static christmas.view.constant.printConstraint.WELCOME_MESSAGE;
 
 import christmas.domain.Day;
 import christmas.domain.Order;

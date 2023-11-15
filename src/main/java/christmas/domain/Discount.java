@@ -1,7 +1,7 @@
 package christmas.domain;
 
 import christmas.domain.constant.EventConstraint;
-import christmas.view.constant.printConstant;
+import christmas.view.constant.printConstraint;
 
 public class Discount {
    private final OrderSheet orderSheet;
@@ -74,46 +74,46 @@ public class Discount {
 
         if(orderSheet.isBeforeDDay()){
             isDiscountExist = true;
-            sb.append(printConstant.SHOW_D_DAY_DISCOUNT.getMessage())
+            sb.append(printConstraint.SHOW_D_DAY_DISCOUNT.getMessage())
                     .append(getDDayDiscountAmount())
-                    .append(printConstant.WON.getMessage())
-                    .append(printConstant.LINE_SEPARATOR.getMessage());
+                    .append(printConstraint.WON.getMessage())
+                    .append(printConstraint.LINE_SEPARATOR.getMessage());
         }
 
         if(orderSheet.isWeekDay() && orderSheet.getDesertCount() > 0){
             isDiscountExist = true;
-            sb.append(printConstant.SHOW_WEEK_DAY_DISCOUNT.getMessage())
+            sb.append(printConstraint.SHOW_WEEK_DAY_DISCOUNT.getMessage())
                     .append(getWeekDayDiscountAmount())
-                    .append(printConstant.WON.getMessage())
-                    .append(printConstant.LINE_SEPARATOR.getMessage());
+                    .append(printConstraint.WON.getMessage())
+                    .append(printConstraint.LINE_SEPARATOR.getMessage());
         }
 
         if(orderSheet.isWeekEnd() && orderSheet.getMainCount() > 0){
             isDiscountExist = true;
-            sb.append(printConstant.SHOW_WEEK_END_DISCOUNT.getMessage())
+            sb.append(printConstraint.SHOW_WEEK_END_DISCOUNT.getMessage())
                     .append(getWeekEndDiscountAmount())
-                    .append(printConstant.WON.getMessage())
-                    .append(printConstant.LINE_SEPARATOR.getMessage());
+                    .append(printConstraint.WON.getMessage())
+                    .append(printConstraint.LINE_SEPARATOR.getMessage());
         }
 
         if(orderSheet.hasStar()){
             isDiscountExist = true;
-            sb.append(printConstant.SHOW_STAR_DAY_DISCOUNT.getMessage())
+            sb.append(printConstraint.SHOW_STAR_DAY_DISCOUNT.getMessage())
                     .append(getStarDayDiscountAmount())
-                    .append(printConstant.WON.getMessage())
-                    .append(printConstant.LINE_SEPARATOR.getMessage());
+                    .append(printConstraint.WON.getMessage())
+                    .append(printConstraint.LINE_SEPARATOR.getMessage());
         }
 
         if(orderSheet.getTotalPrice() >= EventConstraint.GIFT_PROMOTION_QUALIFIER_AMOUNT.getValue()){
             isDiscountExist = true;
-            sb.append(printConstant.SHOW_GIFT_PROMOTION_DISCOUNT.getMessage())
+            sb.append(printConstraint.SHOW_GIFT_PROMOTION_DISCOUNT.getMessage())
                     .append(getGiftPromotionDiscountAmount())
-                    .append(printConstant.WON.getMessage())
-                    .append(printConstant.LINE_SEPARATOR.getMessage());
+                    .append(printConstraint.WON.getMessage())
+                    .append(printConstraint.LINE_SEPARATOR.getMessage());
         }
 
         if(!isDiscountExist){
-            sb.append(printConstant.SHOW_NO_DISCOUNT.getMessage());
+            sb.append(printConstraint.SHOW_NO_DISCOUNT.getMessage());
         }
 
         return sb.toString();

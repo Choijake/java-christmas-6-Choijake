@@ -1,7 +1,7 @@
 package christmas.view.input;
 
-import static christmas.view.constant.printConstant.ASK_MENU_AND_QUANTITY_MESSAGE;
-import static christmas.view.constant.printConstant.ASK_VISIT_DATE_MESSAGE;
+import static christmas.view.constant.printConstraint.ASK_MENU_AND_QUANTITY_MESSAGE;
+import static christmas.view.constant.printConstraint.ASK_VISIT_DATE_MESSAGE;
 
 import christmas.domain.Day;
 import christmas.domain.Order;

@@ -73,28 +73,51 @@ public class Discount {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        boolean isDiscountExist = false;
 
         if(orderSheet.isBeforeDDay()){
-            sb.append(printConstant.SHOW_D_DAY_DISCOUNT.getMessage()).append(getDDayDiscountAmount()).append(printConstant.WON.getMessage());
+            isDiscountExist = true;
+            sb.append(printConstant.SHOW_D_DAY_DISCOUNT.getMessage())
+                    .append(getDDayDiscountAmount())
+                    .append(printConstant.WON.getMessage())
+                    .append(printConstant.LINE_SEPARATOR.getMessage());
         }
 
         if(orderSheet.isWeekDay() && orderSheet.getDesertCount() > 0){
-            sb.append(printConstant.SHOW_WEEK_DAY_DISCOUNT.getMessage()).append(getWeekDayDiscountAmount()).append(printConstant.WON.getMessage());
+            isDiscountExist = true;
+            sb.append(printConstant.SHOW_WEEK_DAY_DISCOUNT.getMessage())
+                    .append(getWeekDayDiscountAmount())
+                    .append(printConstant.WON.getMessage())
+                    .append(printConstant.LINE_SEPARATOR.getMessage());
         }
 
         if(orderSheet.isWeekEnd() && orderSheet.getMainCount() > 0){
-            sb.append(printConstant.SHOW_WEEK_END_DISCOUNT.getMessage()).append(getWeekEndDiscountAmount()).append(printConstant.WON.getMessage());
+            isDiscountExist = true;
+            sb.append(printConstant.SHOW_WEEK_END_DISCOUNT.getMessage())
+                    .append(getWeekEndDiscountAmount())
+                    .append(printConstant.WON.getMessage())
+                    .append(printConstant.LINE_SEPARATOR.getMessage());
         }
 
         if(orderSheet.hasStar()){
-            sb.append(printConstant.SHOW_STAR_DAY_DISCOUNT.getMessage()).append(getStarDayDiscountAmount()).append(printConstant.WON.getMessage());
+            isDiscountExist = true;
+            sb.append(printConstant.SHOW_STAR_DAY_DISCOUNT.getMessage())
+                    .append(getStarDayDiscountAmount())
+                    .append(printConstant.WON.getMessage())
+                    .append(printConstant.LINE_SEPARATOR.getMessage());
         }
 
         if(orderSheet.getTotalPrice() >= GIFT_PROMOTION_QUALIFIER_AMOUNT){
-            sb.append(printConstant.SHOW_GIFT_PROMOTION_DISCOUNT.getMessage()).append(getGiftPromotionDiscountAmount()).append(printConstant.WON.getMessage());
+            isDiscountExist = true;
+            sb.append(printConstant.SHOW_GIFT_PROMOTION_DISCOUNT.getMessage())
+                    .append(getGiftPromotionDiscountAmount())
+                    .append(printConstant.WON.getMessage())
+                    .append(printConstant.LINE_SEPARATOR.getMessage());
         }
 
-        sb.append(printConstant.SHOW_NO_DISCOUNT.getMessage());
+        if(!isDiscountExist){
+            sb.append(printConstant.SHOW_NO_DISCOUNT.getMessage());
+        }
 
         return sb.toString();
     }

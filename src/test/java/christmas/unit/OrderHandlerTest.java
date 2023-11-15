@@ -3,7 +3,6 @@ package christmas.unit;
 import christmas.domain.Customer;
 import christmas.domain.Day;
 import christmas.domain.Order;
-import christmas.domain.OrderSheet;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +10,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class OrderHandlerTest {
     @Test

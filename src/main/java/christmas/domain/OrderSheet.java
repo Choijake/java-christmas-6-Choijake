@@ -4,17 +4,13 @@ import static christmas.exception.ErrorMessage.ALL_MENU_BEVERAGE;
 import static christmas.exception.ErrorMessage.OVER_LIMIT_QUANTITY;
 import static christmas.exception.ErrorMessage.ZERO_MENU_QUANTITY;
 
+import christmas.domain.constant.EventConstraint;
+import christmas.domain.constant.MenuConstraint;
 import christmas.exception.OrderException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class OrderSheet {
-    public static final int MAX_ORDER_AMOUNT = 20;
-    private final static String DESERT_CATEGORY = "desert";
-    private final static String MAIN_CATEGORY = "main";
-    private final static String BEVERAGE_CATEGORY = "beverage";
     private final Day day;
     private final List<Order> orders;
 
@@ -46,7 +42,7 @@ public class OrderSheet {
 
     public boolean areAllMenuBeverage() {
         for (Order order : orders) {
-            if (!Objects.equals(order.getCategory(), BEVERAGE_CATEGORY)) {
+            if (!Objects.equals(order.getCategory(), MenuConstraint.BEVERAGE.getValue())) {
                 return false;
             }
         }
@@ -57,7 +53,7 @@ public class OrderSheet {
     public Integer getDesertCount(){
         int desertCount = 0;
         for(Order order : orders){
-            if(Objects.equals(order.getCategory(), DESERT_CATEGORY)){
+            if(Objects.equals(order.getCategory(), MenuConstraint.DESERT.getValue())){
                 desertCount += order.getQuantity();
             }
         }
@@ -68,7 +64,7 @@ public class OrderSheet {
     public Integer getMainCount(){
         int mainCount = 0;
         for(Order order : orders){
-            if(Objects.equals(order.getCategory(), MAIN_CATEGORY)){
+            if(Objects.equals(order.getCategory(), MenuConstraint.MAIN.getValue())){
                 mainCount += order.getQuantity();
             }
         }
@@ -107,7 +103,7 @@ public class OrderSheet {
     }
 
     private void validateTotalQuantity(){
-        if(getTotalQuantity() > MAX_ORDER_AMOUNT){
+        if(getTotalQuantity() > EventConstraint.MAX_ORDER_AMOUNT.getValue()){
             throw OrderException.from(OVER_LIMIT_QUANTITY);
         }
     }

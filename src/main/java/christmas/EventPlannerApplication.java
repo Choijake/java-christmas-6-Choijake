@@ -13,7 +13,7 @@ import christmas.view.output.OutputWriter;
 
 public class EventPlannerApplication {
     public static void activate(){
-        show(operate(set()));
+        show();
     }
 
     public static OrderSheet set(){
@@ -27,13 +27,15 @@ public class EventPlannerApplication {
         }
     }
 
-    public static Receipt operate(OrderSheet orderSheet){
+    public static Receipt operate(){
+        OrderSheet orderSheet = set();
         Manager manager = Manager.get(orderSheet);
         Discount discount = Discount.of(orderSheet);
         return manager.issueReceipt(discount);
     }
 
-    public static void show(Receipt receipt){
+    public static void show(){
+        Receipt receipt = operate();
         OutputView outputView = OutputView.from(receipt);
         outputView.writeEventPlan();
     }

@@ -5,8 +5,7 @@ import christmas.view.constant.printConstraint;
 
 public class Discount {
    private final OrderSheet orderSheet;
-   
-    //TODO : 이벤트 있는 날에, 메뉴 당 할인이 적용 된다, 메뉴 판을 설정 해줘야 한다
+
    private Discount(OrderSheet orderSheet){
        this.orderSheet = orderSheet;
    }

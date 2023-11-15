@@ -4,7 +4,6 @@ import christmas.domain.constant.EventConstraint;
 import christmas.view.constant.printConstraint;
 
 public class Receipt {
-    //TODO : 주문 메뉴, 할인 전 금액, 증정 메뉴, 해택 내역, 총 혜택 금액, 할인 후 에상 금액, 이벤트 배지 정보 담는 객체
     private final OrderSheet orderSheet;
     private final Discount discount;
 

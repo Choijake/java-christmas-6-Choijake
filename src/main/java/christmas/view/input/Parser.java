@@ -24,7 +24,7 @@ public class Parser {
         }
     }
 
-    static void validateFormat(String str) {
+    public static void validateFormat(String str) {
         if (!isValidFormat(str)) {
             throw OrderException.from(NOT_FIT_FORMAT);
         }

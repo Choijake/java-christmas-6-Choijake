@@ -1,12 +1,10 @@
 package christmas.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import christmas.domain.constant.EventConstraint;
-import java.util.Arrays;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -212,12 +210,6 @@ public class DiscountTest {
         when(mockOrderSheet.getMainCount()).thenReturn(3);
 
         Discount discount = Discount.of(mockOrderSheet);
-
-//        String expected = "크리스마스 디데이 할인: 100원\n" +
-//                "평일 할인 (디저트 주문): 4000원\n" +
-//                "주말 할인 (메인 주문): 6000원\n" +
-//                "별표 날짜 할인: 1000원\n" +
-//                "증정 이벤트 할인: 25000원\n";
 
         assertThat(discount.toString()).contains("크리스마스 디데이 할인: -100원"
                 ,"평일 할인: -4046"

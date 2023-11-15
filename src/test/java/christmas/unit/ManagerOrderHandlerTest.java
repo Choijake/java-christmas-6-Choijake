@@ -11,7 +11,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class ManagerOrderHandlerTest {
-    @DisplayName("Test the process of creating Discount and issuing Receipt")
+    @DisplayName("Manager 생성자 테스트")
     @Test
     void testDiscountAndIssueReceipt() {
         Day day = Day.of(3);

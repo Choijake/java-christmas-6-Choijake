@@ -2,14 +2,11 @@ package christmas.view.input;
 
 import static christmas.view.constant.printConstant.ASK_MENU_AND_QUANTITY_MESSAGE;
 import static christmas.view.constant.printConstant.ASK_VISIT_DATE_MESSAGE;
-import static christmas.view.input.Parser.validateFormat;
 
 import christmas.domain.Day;
 import christmas.domain.Order;
 import christmas.exception.OrderException;
-import christmas.view.input.Parser;
 import christmas.view.output.OutputWriter;
-import christmas.view.input.InputReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +21,7 @@ public class InputHandler {
         return readMenuAndQuantity();
     }
 
-    private static Day readDateInformation(){
+    public static Day readDateInformation(){
         try {
             final String dateInput = InputReader.readLine();
             final int date = Parser.parseStringToInt(dateInput);
@@ -52,5 +49,4 @@ public class InputHandler {
             return readMenuAndQuantity();
         }
     }
-
 }
